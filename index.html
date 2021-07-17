@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048</title>
+</head>
+<Style>
+    table,
+    td {
+
+        border: 1px solid black;
+    }
+
+    td {
+        background: red;
+        width: 70px;
+        height: 70px;
+        text-align: center;
+        transition: background 0.3s;
+    }
+
+    td:active {
+        background: green;
+    }
+</Style>
+
+<body>
+    <table id="t" onClick="clickcounts()"></table>
+    <script>
+        let matrix = [[0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],]
+
+        let tr = document.createElement("tr")
+        let row = 4;
+        let column = 4;
+        for (let i = 0; i < row; i++) {
+            let tr = document.createElement("tr")
+            for (let j = 0; j < column; j++) {
+                let td = document.createElement("td")
+                td.id = ("row" + (i) + "column" + (j));
+                tr.appendChild(td);
+            }
+            t.appendChild(tr)
+        }
+        function clickcounts() {
+            var count = parseInt(document.getElementById(event.srcElement.id).textContent);
+            if (isNaN(count)){
+                count = 0;
+            }
+            document.getElementById(event.srcElement.id).textContent = ++count;
+            matrix[parseInt(event.srcElement.id[3])][parseInt(event.srcElement.id[10])] = count;
+            console.log(matrix);
+        }
+    </script>
+</body>
+
+</html>
